@@ -1,4 +1,31 @@
-# ppv2
+# js-ppv2
+Calculate pp for old ppv2 versions.
+
+this code is very messy and thrown together from other random repos. pls dont judge.
+probably wont push to npm.
+
+## Usage
+
+Example usage:
+
+```js
+import * as parser from "osu-parser"
+import * as util from "util"
+import { Beatmap, PPCalculator } from "js-ppv2"
+
+// Use osu-parser to parse the map
+const path = "path/to/beatmap"
+const parseFile = util.promisify(parser.parseFile)
+const parsed = await parseFile(path)
+
+const beatmap = Beatmap.fromOsuParserObject(parsed)
+const Calculator = PPCalculator.create("2014-05-11")
+
+// set acc, mods(enum), combo and misses
+const pp = Calculator.calculate(beatmap, 99.23%, 16, 727, 5)
+
+console.log(pp)
+```
 
 ## Versions:
 
